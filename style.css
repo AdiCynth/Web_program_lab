@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Books | Home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">📚 Apex Books</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="catalogue.html">Catalogue</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Discover Your Next Great Read</h1>
+            <p>Explore thousands of books across tech, fiction, engineering, and academia at unbeatable prices.</p>
+            <a href="catalogue.html" class="btn">Browse Catalogue</a>
+        </section>
+
+        <h2 class="section-title">Featured Collections</h2>
+        <section class="book-grid">
+            <div class="book-card">
+                <div class="book-cover-placeholder" style="background-color: #dbeafe; color: #1e40af;">Embedded Systems & Architecture</div>
+                <div class="book-info">
+                    <div class="book-title">Designing Embedded Systems with ESP32</div>
+                    <div class="book-author">By K. R. Sharma</div>
+                    <div class="book-price">₹799.00</div>
+                    <a href="#" class="btn" style="text-align: center;">Add to Cart</a>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover-placeholder" style="background-color: #fef3c7; color: #92400e;">Machine Learning</div>
+                <div class="book-info">
+                    <div class="book-title">Applied Telemetry & Predictive Models</div>
+                    <div class="book-author">By Dr. Amit Verma</div>
+                    <div class="book-price">₹1,249.00</div>
+                    <a href="#" class="btn" style="text-align: center;">Add to Cart</a>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover-placeholder" style="background-color: #dcfce7; color: #166534;">Web Programming</div>
+                <div class="book-info">
+                    <div class="book-title">Mastering HTML5, CSS3, & Modern JS</div>
+                    <div class="book-author">By John Doe</div>
+                    <div class="book-price">₹550.00</div>
+                    <a href="#" class="btn" style="text-align: center;">Add to Cart</a>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover-placeholder" style="background-color: #fce7f3; color: #9d174d;">Data Structures</div>
+                <div class="book-info">
+                    <div class="book-title">Algorithms & Huffman Optimizations</div>
+                    <div class="book-author">By Sarah Jenkins</div>
+                    <div class="book-price">₹890.00</div>
+                    <a href="#" class="btn" style="text-align: center;">Add to Cart</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Apex Books Online Store. WPL Mini Project - All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

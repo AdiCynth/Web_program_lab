@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom & Petal | Register</title>
+    <meta name="description" content="Create your Bloom & Petal account to start ordering fresh flowers and beautiful arrangements.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">🌸 Bloom &amp; Petal</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="catalogue.html">Catalogue</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="reg.html" class="active">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="form-container" style="max-width: 600px;">
+            <h2 style="margin-bottom: 1.5rem; text-align: center; color: var(--primary-color);">Create New Account</h2>
+            <form action="#" method="POST">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="name@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="10-digit mobile number" required pattern="[0-9]{10}">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" class="form-control" placeholder="Min. 8 chars" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" class="form-control" placeholder="Re-enter password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea id="address" class="form-control" rows="3" placeholder="Street, Building, City, Pincode" style="resize: vertical;" required></textarea>
+                </div>
+                <label style="display: flex; align-items: flex-start; gap: 0.5rem; font-weight: normal; margin-bottom: 1.5rem; cursor: pointer;">
+                    <input type="checkbox" style="margin-top: 0.3rem;" required> I accept the Terms of Service &amp; Privacy Policy.
+                </label>
+                <button type="submit" class="btn" style="width: 100%;">Complete Registration</button>
+            </form>
+            <div class="form-footer">
+                <p>Already have an account? <a href="login.html">Sign In here</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Bloom &amp; Petal Online Flower Shop. WPL Mini Project - All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
