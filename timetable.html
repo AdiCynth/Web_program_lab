@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --border-color: #cbd5e1;
+            --header-bg: #f8fafc;
+            --lunch-bg: #f1f5f9;
+            --text-main: #0f172a;
+            --text-muted: #334155;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-main);
+            background-color: #ffffff;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- Header Styling --- */
+        .header-container {
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dept-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+        }
+
+        .table-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0 0 20px 0;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            padding: 0 5px;
+        }
+
+        /* --- Table Layout & Styling --- */
+        .table-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            overflow-x: auto; /* Makes it responsive on small screens */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 0.85rem;
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: var(--header-bg);
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .time-col {
+            font-weight: 600;
+            white-space: nowrap;
+            background-color: var(--header-bg);
+            width: 8%;
+        }
+
+        .lunch-break {
+            background-color: var(--lunch-bg);
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+        }
+
+        /* --- Inner CSS Grid for Sub-columns (Batches) --- */
+        .p-0 {
+            padding: 0 !important; /* Remove padding to let grid fill the cell */
+        }
+
+        .grid-container {
+            display: grid;
+            height: 100%;
+            width: 100%;
+            min-height: 80px; /* Ensure sufficient height for multi-row spans */
+        }
+
+        .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+        .grid-item {
+            border-right: 1px solid var(--border-color);
+            padding: 8px 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid-item:last-child {
+            border-right: none;
+        }
+
+        /* --- Footer Signatures --- */
+        .signatures {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-container">
+        <h1 class="dept-title">Department of Electronic And Computer Engineering</h1>
+        <h2 class="table-title">Time Table</h2>
+        <div class="meta-info">
+            <span>Class: TY B. Tech EXCP A</span>
+            <span>Year: 2026-2027 Semester: ODD</span>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="time-col">Time/Day</th>
+                    <th style="width: 18.4%;">Monday</th>
+                    <th style="width: 18.4%;">Tuesday</th>
+                    <th style="width: 18.4%;">Wednesday</th>
+                    <th style="width: 18.4%;">Thursday</th>
+                    <th style="width: 18.4%;">Friday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="time-col">7:00-<br>8:00</td>
+                    <td></td><td></td><td></td><td></td><td></td>
+                </tr>
+
+                <tr>
+                    <td class="time-col">8:00-<br>9:00</td>
+                    <td></td><td></td><td></td><td></td><td></td>
+                </tr>
+
+                <tr>
+                    <td class="time-col">9:00-<br>10:00</td>
+                    <td rowspan="2">MINOR_1<br>-- --</td>
+                    <td rowspan="2">MINOR_2<br>-- --</td>
+                    <td>MINOR -- --</td>
+                    <td>MINOR -- --</td>
+                    <td>MINOR -- --</td>
+                </tr>
+
+                <tr>
+                    <td class="time-col">10:00-<br>11:00</td>
+                    <td rowspan="2" class="p-0">
+                        <div class="grid-container grid-2">
+                            <div class="grid-item">A1<br>ACS B407L X2</div>
+                            <div class="grid-item">A4<br>MPL B409 X6</div>
+                        </div>
+                    </td>
+                    <td>COA B504 KCS</td>
+                    <td>ACS B504 MRS</td>
+                </tr>
+
+                <tr>
+                    <td class="time-col">11:00-<br>12:00</td>
+                    <td class="p-0">
+                        <div class="grid-container grid-3">
+                            <div class="grid-item">A2<br>WPL<br>B416A<br>SRJ</div>
+                            <div class="grid-item">A3<br>MPL<br>B409<br>NDM</div>
+                            <div class="grid-item">A4<br>WPL<br>B416B<br>X4</div>
+                        </div>
+                    </td>
+                    <td class="p-0">
+                        <div class="grid-container grid-4">
+                            <div class="grid-item">A1<br>WPL<br>B416A<br>SRJ</div>
+                            <div class="grid-item">A2<br>MPL<br>B409<br>KCS</div>
+                            <div class="grid-item">A3<br>WPL<br>B416B<br>X5</div>
+                            <div class="grid-item">A4<br>ACS<br>B407L<br>X2</div>
+                        </div>
+                    </td>
+                    <td class="p-0">
+                        <div class="grid-container grid-3">
+                            <div class="grid-item">H-FPGA<br>B504<br>AWK</div>
+                            <div class="grid-item">DE-SE<br>B505<br>NAL</div>
+                            <div class="grid-item">DE-APPA<br>B405<br>DVJ</div>
+                        </div>
+                    </td>
+                    <td class="p-0">
+                        <div class="grid-container grid-4">
+                            <div class="grid-item">DE-APPA_1<br>B510A<br>X1</div>
+                            <div class="grid-item">DE-APPA_2<br>B410A<br>DVJ</div>
+                            <div class="grid-item">H-FPGA<br>B410B<br>AWK</div>
+                            <div class="grid-item">DE-SE<br>B513<br>NAL</div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="time-col">12:00-<br>1:00</td>
+                    <td></td>
+                    <td></td>
+                    <td>ToA B504 PRG</td>
+                    <td>ACS B504 MRS</td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td class="time-col">1:00-<br>2:00</td>
+                    <td colspan="5" class="lunch-break">LUNCH BREAK</td>
+                </tr>
+
+                <tr>
+                    <td class="time-col">2:00-<br>3:00</td>
+                    <td>ToA B504 PRG</td>
+                    <td>ACS B504 MRS</td>
+                    <td rowspan="2" class="p-0">
+                        <div class="grid-container grid-4">
+                            <div class="grid-item">A1<br>MPL<br>B409<br>X6</div>
+                            <div class="grid-item">A2<br>WPL<br>B416B<br>SRJ</div>
+                            <div class="grid-item">A3<br>ACS<br>B407L<br>MRS</div>
+                            <div class="grid-item">A4<br>WPL<br>B416A<br>X4</div>
+                        </div>
+                    </td>
+                    <td rowspan="2" class="p-0">
+                        <div class="grid-container grid-3">
+                            <div class="grid-item">A1<br>WPL<br>B416B<br>SRJ</div>
+                            <div class="grid-item">A2<br>ACS<br>B407L<br>MRS</div>
+                            <div class="grid-item">A3<br>WPL<br>B416A<br>X5</div>
+                        </div>
+                    </td>
+                    <td class="p-0">
+                        <div class="grid-container grid-3">
+                            <div class="grid-item">H-FPGA B504<br>AWK</div>
+                            <div class="grid-item">DE-SE<br>B404<br>NAL</div>
+                            <div class="grid-item">DE-APPA<br>B405<br>DVJ</div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="time-col">3:00-<br>4:00</td>
+                    <td>COA B504 KCS</td>
+                    <td>COA B504 KCS</td>
+                    <td>ToA B504 PRG</td>
+                </tr>
+
+                <tr>
+                    <td class="time-col">4:00-<br>5:00</td>
+                    <td class="p-0">
+                        <div class="grid-container grid-3">
+                            <div class="grid-item">H-FPGA<br>B504<br>AWK</div>
+                            <div class="grid-item">DE-SE<br>B505<br>NAL</div>
+                            <div class="grid-item">DE-APPA<br>B403<br>DVJ</div>
+                        </div>
+                    </td>
+                    <td class="p-0">
+                        <div class="grid-container grid-2">
+                            <div class="grid-item">A2<br>ToA B503 GPS</div>
+                            <div class="grid-item">A4<br>ToA B504 X5</div>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td class="p-0">
+                        <div class="grid-container grid-2">
+                            <div class="grid-item">A1<br>ToA B505 PRG</div>
+                            <div class="grid-item">A3<br>ToA B504 GPS</div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="time-col">5:00-<br>6:00</td>
+                    <td></td><td></td><td></td><td></td><td></td>
+                </tr>
+
+                <tr>
+                    <td class="time-col">6:00-<br>7:00</td>
+                    <td></td><td></td><td></td><td></td><td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="signatures">
+        <span>H.O.D</span>
+        <span>PRINCIPAL</span>
+    </div>
+
+</body>
+</html>
