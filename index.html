@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - FinTrack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>FinTrack</h1>
+        <p>Your Personal Financial Portfolio Tracker</p>
+    </header>
+
+    <nav>
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="portfolio.html">My Portfolio</a>
+        <a href="stocks.html">Market Watch</a>
+        <a href="transactions.html">Transactions</a>
+    </nav>
+
+    <main>
+
+        <!-- Summary Cards Row -->
+        <div class="card-row">
+            <div class="card stat-card">
+                <p class="stat-label">Total Portfolio Value</p>
+                <p class="stat-value">&#8377;1,25,340</p>
+            </div>
+            <div class="card stat-card">
+                <p class="stat-label">Today&apos;s Gain / Loss</p>
+                <p class="stat-value gain">+&#8377;2,340 (+1.90%)</p>
+            </div>
+            <div class="card stat-card">
+                <p class="stat-label">Total Invested</p>
+                <p class="stat-value">&#8377;1,08,000</p>
+            </div>
+            <div class="card stat-card">
+                <p class="stat-label">Overall Returns</p>
+                <p class="stat-value gain">+&#8377;17,340 (+16.06%)</p>
+            </div>
+        </div>
+
+        <!-- Top Holdings List -->
+        <h2>Top Holdings by Value</h2>
+        <ol>
+            <li><span class="stock-name">Reliance Industries</span> &mdash; &#8377;38,500 &nbsp;|&nbsp; 13 units</li>
+            <li><span class="stock-name">TCS</span> &mdash; &#8377;34,100 &nbsp;|&nbsp; 10 units</li>
+            <li><span class="stock-name">HDFC Bank</span> &mdash; &#8377;24,300 &nbsp;|&nbsp; 15 units</li>
+            <li><span class="stock-name">Infosys</span> &mdash; &#8377;17,400 &nbsp;|&nbsp; 10 units</li>
+            <li><span class="stock-name">Wipro</span> &mdash; &#8377;11,040 &nbsp;|&nbsp; 12 units</li>
+        </ol>
+
+        <!-- Stock Details -->
+        <h2>Quick Stock Info</h2>
+        <dl>
+            <dt>Reliance Industries (RELIANCE)</dt>
+            <dd>Sector: Energy &nbsp;|&nbsp; Price: &#8377;2,962 &nbsp;|&nbsp; P/E: 24.5 &nbsp;|&nbsp; 52W High: &#8377;3,024</dd>
+
+            <dt>TCS</dt>
+            <dd>Sector: IT &nbsp;|&nbsp; Price: &#8377;3,410 &nbsp;|&nbsp; P/E: 31.2 &nbsp;|&nbsp; 52W High: &#8377;3,890</dd>
+
+            <dt>HDFC Bank (HDFCBANK)</dt>
+            <dd>Sector: Banking &nbsp;|&nbsp; Price: &#8377;1,620 &nbsp;|&nbsp; P/E: 18.7 &nbsp;|&nbsp; 52W High: &#8377;1,794</dd>
+        </dl>
+
+    </main>
+
+    <footer>
+        <p>FinTrack &copy; 2024 &mdash; Financial Portfolio Tracker &nbsp;|&nbsp; Data is for educational purposes only</p>
+    </footer>
+
+</body>
+</html>

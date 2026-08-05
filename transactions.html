@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions - FinTrack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>FinTrack</h1>
+        <p>Your Personal Financial Portfolio Tracker</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="portfolio.html">My Portfolio</a>
+        <a href="stocks.html">Market Watch</a>
+        <a href="transactions.html" class="active">Transactions</a>
+    </nav>
+
+    <main>
+
+        <!-- Summary Card -->
+        <div class="card">
+            <h2>Transaction Summary</h2>
+            <p><strong>Total Transactions:</strong> 12</p>
+            <p><strong>Total Bought:</strong> &#8377;1,08,000 &nbsp;|&nbsp; <strong>Total Sold:</strong> &#8377;22,500</p>
+            <p><strong>Realised P&amp;L:</strong> <span class="gain">+&#8377;3,200</span></p>
+        </div>
+
+        <!-- Recent Transactions Table -->
+        <h2>Recent Transactions</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Stock</th>
+                    <th>Type</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01 Aug 2024</td>
+                    <td><span class="stock-name">TCS</span></td>
+                    <td><span class="badge buy">BUY</span></td>
+                    <td>5</td>
+                    <td>&#8377;3,100</td>
+                    <td>&#8377;15,500</td>
+                </tr>
+                <tr>
+                    <td>28 Jul 2024</td>
+                    <td><span class="stock-name">Reliance Industries</span></td>
+                    <td><span class="badge sell">SELL</span></td>
+                    <td>3</td>
+                    <td>&#8377;3,010</td>
+                    <td>&#8377;9,030</td>
+                </tr>
+                <tr>
+                    <td>20 Jul 2024</td>
+                    <td><span class="stock-name">HDFC Bank</span></td>
+                    <td><span class="badge buy">BUY</span></td>
+                    <td>10</td>
+                    <td>&#8377;1,540</td>
+                    <td>&#8377;15,400</td>
+                </tr>
+                <tr>
+                    <td>15 Jul 2024</td>
+                    <td><span class="stock-name">Wipro</span></td>
+                    <td><span class="badge buy">BUY</span></td>
+                    <td>12</td>
+                    <td>&#8377;950</td>
+                    <td>&#8377;11,400</td>
+                </tr>
+                <tr>
+                    <td>10 Jul 2024</td>
+                    <td><span class="stock-name">Infosys</span></td>
+                    <td><span class="badge sell">SELL</span></td>
+                    <td>5</td>
+                    <td>&#8377;1,820</td>
+                    <td>&#8377;9,100</td>
+                </tr>
+                <tr>
+                    <td>05 Jul 2024</td>
+                    <td><span class="stock-name">Reliance Industries</span></td>
+                    <td><span class="badge buy">BUY</span></td>
+                    <td>10</td>
+                    <td>&#8377;2,680</td>
+                    <td>&#8377;26,800</td>
+                </tr>
+                <tr>
+                    <td>01 Jul 2024</td>
+                    <td><span class="stock-name">TCS</span></td>
+                    <td><span class="badge buy">BUY</span></td>
+                    <td>5</td>
+                    <td>&#8377;3,090</td>
+                    <td>&#8377;15,450</td>
+                </tr>
+                <tr>
+                    <td>25 Jun 2024</td>
+                    <td><span class="stock-name">Infosys</span></td>
+                    <td><span class="badge buy">BUY</span></td>
+                    <td>10</td>
+                    <td>&#8377;1,800</td>
+                    <td>&#8377;18,000</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Transaction Notes -->
+        <h2>Notes on Transactions</h2>
+        <dl>
+            <dt>BUY Orders</dt>
+            <dd>Orders placed to acquire shares. Price is the average execution price. Amount includes brokerage charges.</dd>
+
+            <dt>SELL Orders</dt>
+            <dd>Orders placed to exit a position. Realised P&amp;L is calculated after deducting taxes (STT, LTCG/STCG) and brokerage.</dd>
+
+            <dt>Realised P&amp;L</dt>
+            <dd>Profit or loss that has been booked by selling shares. Does not include unrealised gains on current holdings.</dd>
+        </dl>
+
+    </main>
+
+    <footer>
+        <p>FinTrack &copy; 2024 &mdash; Financial Portfolio Tracker &nbsp;|&nbsp; Data is for educational purposes only</p>
+    </footer>
+
+</body>
+</html>

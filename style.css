@@ -1,0 +1,313 @@
+/* ============================================================
+   style.css — Financial Portfolio Tracker
+   Covers CSS Tasks 1 through 6
+   ============================================================ */
+
+
+/* -------------------------------------------------------
+   TASK 1: Basic Page Styling
+   Concepts: element selector, global styling, properties
+   ------------------------------------------------------- */
+
+body {
+    background-color: #eef2f7;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}
+
+
+/* -------------------------------------------------------
+   TASK 2: Style the Header and Footer
+   Concepts: element styling, color, padding
+   ------------------------------------------------------- */
+
+header {
+    background-color: #1b3a5c;
+    color: white;
+    padding: 20px 30px;
+}
+
+header h1 {
+    margin: 0 0 5px 0;
+    font-size: 2em;
+    letter-spacing: 1px;
+}
+
+header p {
+    margin: 0;
+    font-size: 0.95em;
+    color: #aac4e0;
+}
+
+footer {
+    background-color: #1b3a5c;
+    color: white;
+    padding: 15px 30px;
+    font-size: 0.9em;
+    margin-top: auto;
+}
+
+
+/* -------------------------------------------------------
+   TASK 3: Horizontal Navigation Bar
+   Concepts: nav a, text-decoration, display, :hover
+   ------------------------------------------------------- */
+
+nav {
+    background-color: #254e78;
+    padding: 0 20px;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    display: inline-block;
+    color: #cce0f5;
+    padding: 12px 18px;
+    font-size: 0.95em;
+    margin: 0 4px;
+}
+
+nav a:hover {
+    color: #ffffff;
+    background-color: #1b3a5c;
+}
+
+nav a.active {
+    color: #ffffff;
+    border-bottom: 3px solid #5ba3d9;
+}
+
+
+/* -------------------------------------------------------
+   TASK 4: Card Styling
+   Concepts: class selector, box model, box-shadow
+   ------------------------------------------------------- */
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #c8d8ea;
+    border-radius: 8px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 55%;
+    margin: 25px auto;
+    padding: 20px 25px;
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #1b3a5c;
+    font-size: 1.2em;
+    border-bottom: 2px solid #d0e8f5;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    margin: 6px 0;
+    font-size: 0.95em;
+}
+
+/* Gain / Loss colors — used globally across all pages */
+.gain {
+    color: #1a7a3d;
+    font-weight: bold;
+}
+
+.loss {
+    color: #b03030;
+    font-weight: bold;
+}
+
+/* Row of stat cards side by side */
+.card-row {
+    display: flex;
+    gap: 16px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.card-row .card {
+    flex: 1;
+    min-width: 160px;
+    width: auto;
+    margin: 0;
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.85em;
+    color: #555555;
+    margin-bottom: 6px;
+}
+
+.stat-value {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #1b3a5c;
+    margin: 4px 0;
+}
+
+
+/* -------------------------------------------------------
+   TASK 5: Style Lists
+   Concepts: list styling, spacing, colors
+   ------------------------------------------------------- */
+
+ol {
+    list-style-type: decimal;
+    padding-left: 25px;
+}
+
+ol li {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
+
+/* stock-name used in both ol li and table cells */
+span.stock-name {
+    color: #1b3a5c;
+    font-weight: bold;
+}
+
+dl {
+    background-color: #dce9f5;
+    padding: 15px 20px;
+    border-left: 4px solid #254e78;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+dt {
+    font-weight: bold;
+    color: #1b3a5c;
+    margin-top: 12px;
+}
+
+dt:first-child {
+    margin-top: 0;
+}
+
+dd {
+    color: #555555;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    font-size: 0.92em;
+}
+
+
+/* -------------------------------------------------------
+   TASK 6: Consistent Layout for All Pages
+   Concepts: layout consistency, reusable CSS
+   ------------------------------------------------------- */
+
+main {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 0 20px;
+    flex: 1;
+}
+
+main h2 {
+    color: #1b3a5c;
+    margin-top: 30px;
+    font-size: 1.15em;
+    border-left: 4px solid #254e78;
+    padding-left: 10px;
+}
+
+/* -------------------------------------------------------
+   Table Styling — used in portfolio.html and transactions.html
+   ------------------------------------------------------- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.93em;
+    background-color: #ffffff;
+    border: 1px solid #c8d8ea;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #254e78;
+    color: white;
+}
+
+th {
+    padding: 11px 14px;
+    text-align: left;
+    font-weight: normal;
+    font-size: 0.92em;
+    letter-spacing: 0.4px;
+}
+
+td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #e0ecf5;
+    color: #333333;
+}
+
+/* Alternate row shading */
+tbody tr:nth-child(even) {
+    background-color: #f4f8fc;
+}
+
+tbody tr:hover {
+    background-color: #e6f0fa;
+}
+
+/* -------------------------------------------------------
+   Two-column layout — used in stocks.html
+   ------------------------------------------------------- */
+
+.two-col {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.two-col > div {
+    flex: 1;
+    min-width: 260px;
+}
+
+/* -------------------------------------------------------
+   BUY / SELL badges — used in transactions.html
+   ------------------------------------------------------- */
+
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.82em;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.badge.buy {
+    background-color: #d4edda;
+    color: #1a7a3d;
+    border: 1px solid #a3d4b0;
+}
+
+.badge.sell {
+    background-color: #fde8e8;
+    color: #b03030;
+    border: 1px solid #f0b0b0;
+}

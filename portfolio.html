@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - FinTrack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>FinTrack</h1>
+        <p>Your Personal Financial Portfolio Tracker</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="portfolio.html" class="active">My Portfolio</a>
+        <a href="stocks.html">Market Watch</a>
+        <a href="transactions.html">Transactions</a>
+    </nav>
+
+    <main>
+
+        <!-- Portfolio Summary Card -->
+        <div class="card">
+            <h2>Portfolio Overview</h2>
+            <p><strong>Total Invested:</strong> &#8377;1,08,000</p>
+            <p><strong>Current Value:</strong> &#8377;1,25,340</p>
+            <p><strong>Total P&amp;L:</strong> <span class="gain">+&#8377;17,340 (+16.06%)</span></p>
+            <p><strong>Number of Holdings:</strong> 5 stocks</p>
+        </div>
+
+        <!-- Holdings Table -->
+        <h2>My Holdings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stock</th>
+                    <th>Qty</th>
+                    <th>Avg Buy Price</th>
+                    <th>Current Price</th>
+                    <th>Current Value</th>
+                    <th>P&amp;L</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="stock-name">Reliance Industries</span></td>
+                    <td>13</td>
+                    <td>&#8377;2,700</td>
+                    <td>&#8377;2,962</td>
+                    <td>&#8377;38,506</td>
+                    <td class="gain">+&#8377;3,406 (+9.7%)</td>
+                </tr>
+                <tr>
+                    <td><span class="stock-name">TCS</span></td>
+                    <td>10</td>
+                    <td>&#8377;3,100</td>
+                    <td>&#8377;3,410</td>
+                    <td>&#8377;34,100</td>
+                    <td class="gain">+&#8377;3,100 (+10.0%)</td>
+                </tr>
+                <tr>
+                    <td><span class="stock-name">HDFC Bank</span></td>
+                    <td>15</td>
+                    <td>&#8377;1,550</td>
+                    <td>&#8377;1,620</td>
+                    <td>&#8377;24,300</td>
+                    <td class="gain">+&#8377;1,050 (+4.5%)</td>
+                </tr>
+                <tr>
+                    <td><span class="stock-name">Infosys</span></td>
+                    <td>10</td>
+                    <td>&#8377;1,800</td>
+                    <td>&#8377;1,740</td>
+                    <td>&#8377;17,400</td>
+                    <td class="loss">-&#8377;600 (-3.3%)</td>
+                </tr>
+                <tr>
+                    <td><span class="stock-name">Wipro</span></td>
+                    <td>12</td>
+                    <td>&#8377;950</td>
+                    <td>&#8377;920</td>
+                    <td>&#8377;11,040</td>
+                    <td class="loss">-&#8377;360 (-3.2%)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Allocation Description List -->
+        <h2>Sector Allocation</h2>
+        <dl>
+            <dt>Information Technology</dt>
+            <dd>TCS, Infosys, Wipro &mdash; Combined Value: &#8377;62,540 (49.9%)</dd>
+
+            <dt>Energy</dt>
+            <dd>Reliance Industries &mdash; Combined Value: &#8377;38,506 (30.7%)</dd>
+
+            <dt>Banking &amp; Finance</dt>
+            <dd>HDFC Bank &mdash; Combined Value: &#8377;24,300 (19.4%)</dd>
+        </dl>
+
+    </main>
+
+    <footer>
+        <p>FinTrack &copy; 2024 &mdash; Financial Portfolio Tracker &nbsp;|&nbsp; Data is for educational purposes only</p>
+    </footer>
+
+</body>
+</html>

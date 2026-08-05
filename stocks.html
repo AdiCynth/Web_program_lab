@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Watch - FinTrack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>FinTrack</h1>
+        <p>Your Personal Financial Portfolio Tracker</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Dashboard</a>
+        <a href="portfolio.html">My Portfolio</a>
+        <a href="stocks.html" class="active">Market Watch</a>
+        <a href="transactions.html">Transactions</a>
+    </nav>
+
+    <main>
+
+        <h2>Market Overview</h2>
+
+        <!-- Market Index Cards -->
+        <div class="card-row">
+            <div class="card stat-card">
+                <p class="stat-label">SENSEX</p>
+                <p class="stat-value">72,840</p>
+                <p class="gain">+324 (+0.45%)</p>
+            </div>
+            <div class="card stat-card">
+                <p class="stat-label">NIFTY 50</p>
+                <p class="stat-value">22,100</p>
+                <p class="gain">+98 (+0.45%)</p>
+            </div>
+            <div class="card stat-card">
+                <p class="stat-label">NIFTY IT</p>
+                <p class="stat-value">38,450</p>
+                <p class="loss">-210 (-0.54%)</p>
+            </div>
+            <div class="card stat-card">
+                <p class="stat-label">NIFTY BANK</p>
+                <p class="stat-value">47,300</p>
+                <p class="gain">+185 (+0.39%)</p>
+            </div>
+        </div>
+
+        <!-- Gainers and Losers Lists -->
+        <div class="two-col">
+            <div>
+                <h2>Top Gainers Today</h2>
+                <ol>
+                    <li><span class="stock-name">Bajaj Finance</span> &mdash; <span class="gain">+4.8%</span> &mdash; &#8377;7,210</li>
+                    <li><span class="stock-name">Tata Motors</span> &mdash; <span class="gain">+3.6%</span> &mdash; &#8377;965</li>
+                    <li><span class="stock-name">TCS</span> &mdash; <span class="gain">+3.4%</span> &mdash; &#8377;3,410</li>
+                    <li><span class="stock-name">Sun Pharma</span> &mdash; <span class="gain">+2.9%</span> &mdash; &#8377;1,542</li>
+                    <li><span class="stock-name">Maruti Suzuki</span> &mdash; <span class="gain">+2.1%</span> &mdash; &#8377;11,230</li>
+                </ol>
+            </div>
+            <div>
+                <h2>Top Losers Today</h2>
+                <ol>
+                    <li><span class="stock-name">Wipro</span> &mdash; <span class="loss">-1.2%</span> &mdash; &#8377;920</li>
+                    <li><span class="stock-name">Tech Mahindra</span> &mdash; <span class="loss">-1.5%</span> &mdash; &#8377;1,420</li>
+                    <li><span class="stock-name">HCL Tech</span> &mdash; <span class="loss">-0.9%</span> &mdash; &#8377;1,680</li>
+                    <li><span class="stock-name">Infosys</span> &mdash; <span class="loss">-0.8%</span> &mdash; &#8377;1,740</li>
+                    <li><span class="stock-name">ONGC</span> &mdash; <span class="loss">-0.6%</span> &mdash; &#8377;278</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Stock Fundamentals Description List -->
+        <h2>Stock Fundamentals</h2>
+        <dl>
+            <dt>Bajaj Finance (BAJFINANCE)</dt>
+            <dd>Sector: Finance &nbsp;|&nbsp; Market Cap: &#8377;4.3L Cr &nbsp;|&nbsp; P/E: 32.5 &nbsp;|&nbsp; Dividend Yield: 0.4% &nbsp;|&nbsp; 52W Range: &#8377;6,200 &ndash; &#8377;8,192</dd>
+
+            <dt>Tata Motors (TATAMOTORS)</dt>
+            <dd>Sector: Auto &nbsp;|&nbsp; Market Cap: &#8377;3.5L Cr &nbsp;|&nbsp; P/E: 11.2 &nbsp;|&nbsp; Dividend Yield: 0.7% &nbsp;|&nbsp; 52W Range: &#8377;620 &ndash; &#8377;1,179</dd>
+
+            <dt>Sun Pharma (SUNPHARMA)</dt>
+            <dd>Sector: Pharma &nbsp;|&nbsp; Market Cap: &#8377;3.7L Cr &nbsp;|&nbsp; P/E: 38.1 &nbsp;|&nbsp; Dividend Yield: 0.8% &nbsp;|&nbsp; 52W Range: &#8377;1,050 &ndash; &#8377;1,960</dd>
+
+            <dt>Maruti Suzuki (MARUTI)</dt>
+            <dd>Sector: Auto &nbsp;|&nbsp; Market Cap: &#8377;3.4L Cr &nbsp;|&nbsp; P/E: 27.9 &nbsp;|&nbsp; Dividend Yield: 1.1% &nbsp;|&nbsp; 52W Range: &#8377;9,400 &ndash; &#8377;13,680</dd>
+        </dl>
+
+    </main>
+
+    <footer>
+        <p>FinTrack &copy; 2024 &mdash; Financial Portfolio Tracker &nbsp;|&nbsp; Data is for educational purposes only</p>
+    </footer>
+
+</body>
+</html>
