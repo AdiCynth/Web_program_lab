@@ -1,0 +1,5 @@
+[2026-09-13T19:00:06.670Z] Failed route attempt: GET /busted-route
+[2026-09-13T19:00:25.368Z] Failed route attempt: GET /favicon.ico
+[2026-09-13T19:01:18.060Z] Failed route attempt: GET /favicon.ico
+[2026-09-13T19:27:58.342Z] Failed route attempt: GET /favicon.ico
+[2026-09-13T19:28:45.839Z] Failed route attempt: GET /favicon.ico

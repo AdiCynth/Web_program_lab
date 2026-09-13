@@ -1,0 +1,238 @@
+:root {
+    --bg-dark: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    
+    --safe-glow: rgba(16, 185, 129, 0.2);
+    --safe-border: rgba(16, 185, 129, 0.4);
+    --safe-text: #34d399;
+    --safe-bg: rgba(16, 185, 129, 0.1);
+    
+    --danger-glow: rgba(239, 68, 68, 0.2);
+    --danger-border: rgba(239, 68, 68, 0.4);
+    --danger-text: #f87171;
+    --danger-bg: rgba(239, 68, 68, 0.1);
+    
+    --warning-glow: rgba(245, 158, 11, 0.2);
+    --warning-text: #fbbf24;
+    --warning-bg: rgba(245, 158, 11, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.background-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.5;
+    animation: float 20s infinite alternate;
+}
+
+.blob-1 {
+    top: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(99,102,241,0.4) 0%, rgba(0,0,0,0) 70%);
+}
+
+.blob-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(236,72,153,0.3) 0%, rgba(0,0,0,0) 70%);
+    animation-delay: -10s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(5%, 10%) scale(1.1); }
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #e0e7ff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.timetable {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 2rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.safe-card:hover {
+    box-shadow: 0 10px 40px var(--safe-glow);
+    border-color: var(--safe-border);
+}
+
+.danger-card:hover {
+    box-shadow: 0 10px 40px var(--danger-glow);
+    border-color: var(--danger-border);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1rem;
+}
+
+.card-header h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.percentage {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.safe-text {
+    color: var(--safe-text);
+}
+
+.danger-text {
+    color: var(--danger-text);
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+}
+
+.stat-item .label {
+    color: var(--text-secondary);
+}
+
+.stat-item .value {
+    font-weight: 600;
+}
+
+.verdict {
+    margin-top: auto;
+}
+
+.message {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    border-radius: 16px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+}
+
+.message .icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.safe-message {
+    background: var(--safe-bg);
+    color: var(--safe-text);
+}
+
+.safe-message strong {
+    font-weight: 800;
+    font-size: 1.2em;
+}
+
+.danger-message {
+    background: var(--danger-bg);
+    color: var(--danger-text);
+}
+
+.danger-message strong {
+    font-weight: 800;
+    font-size: 1.2em;
+}
+
+.warning-message {
+    background: var(--warning-bg);
+    color: var(--warning-text);
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+    .timetable {
+        grid-template-columns: 1fr;
+    }
+}

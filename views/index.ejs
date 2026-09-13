@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('partials/nav') %>
+
+    <div class="container">
+        <h1 class="mb-4">Attendance Summary</h1>
+        <div class="row">
+            <!-- Left Column: Aggregates -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="card-title mb-0">Total Aggregate</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Total Planned
+                                <span class="badge bg-secondary rounded-pill"><%= aggregates.planned %></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Total Conducted
+                                <span class="badge bg-secondary rounded-pill"><%= aggregates.conducted %></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Total Present
+                                <span class="badge bg-secondary rounded-pill"><%= aggregates.present %></span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center fw-bold">
+                                Aggregate %
+                                <span><%= aggregates.percentage %>%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Subjects -->
+            <div class="col-md-8">
+                <div class="row">
+                    <% attendance.forEach(item => { %>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 shadow-sm border-2 <%= item.statusClass.split(' ')[1] %>">
+                                <div class="card-header <%= item.statusClass.split(' ')[0] %>">
+                                    <h6 class="card-title mb-0 text-truncate" title="<%= item.subjectName %>"><%= item.subjectName %></h6>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text mb-1"><small class="text-muted">Faculty: <%= item.faculty %></small></p>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Conducted: <strong><%= item.conducted %></strong></span>
+                                        <span>Present: <strong><%= item.present %></strong></span>
+                                    </div>
+                                    <h3 class="text-center mb-0"><%= item.percentage %>%</h3>
+                                </div>
+                                <div class="card-footer bg-transparent">
+                                    <% if (item.percentage >= 75) { %>
+                                        <small class="text-success">You can bunk <strong><%= item.bunksAvailable %></strong> more classes.</small>
+                                    <% } else { %>
+                                        <small class="text-danger">Attend next <strong><%= item.lecturesNeeded %></strong> classes.</small>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
