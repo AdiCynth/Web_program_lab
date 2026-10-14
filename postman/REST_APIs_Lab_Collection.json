@@ -1,0 +1,615 @@
+{
+	"info": {
+		"_postman_id": "a9d3e8f7-9201-49b1-bf55-cb81e9b21f90",
+		"name": "Web Programming Lab - REST APIs (Tasks 1, 2, 3)",
+		"description": "Automated Postman collection with tests and dynamic variables for Tasks 1, 2, and 3.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "courseId",
+			"value": ""
+		},
+		{
+			"key": "bookId",
+			"value": ""
+		}
+	],
+	"item": [
+		{
+			"name": "Task 1 - Student API (Port 5001)",
+			"item": [
+				{
+					"name": "1. GET All Students",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Has student list\", function () {",
+									"    const json = pm.response.json();",
+									"    pm.expect(json.data.length).to.be.at.least(5);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5001/students"
+					}
+				},
+				{
+					"name": "2. GET Single Student (ID: 1)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Student ID is 1\", function () {",
+									"    const json = pm.response.json();",
+									"    pm.expect(json.data.id).to.eql(1);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5001/students/1"
+					}
+				},
+				{
+					"name": "3. GET Student Not Found (ID: 999)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404 Not Found\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5001/students/999"
+					}
+				},
+				{
+					"name": "4. POST Create Student (Valid)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201 Created\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"pm.test(\"Returned student data\", function () {",
+									"    const json = pm.response.json();",
+									"    pm.expect(json.data.name).to.eql(\"Ananya Sharma\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Ananya Sharma\",\n  \"department\": \"Computer Science\",\n  \"semester\": 4\n}"
+						},
+						"url": "http://localhost:5001/students"
+					}
+				},
+				{
+					"name": "5. POST Create Student (Validation Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 Bad Request\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"\"\n}"
+						},
+						"url": "http://localhost:5001/students"
+					}
+				}
+			]
+		},
+		{
+			"name": "Task 2 - Course API with MongoDB (Port 5002)",
+			"item": [
+				{
+					"name": "1. POST Create Course",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const randomCode = 'CS' + Math.floor(100 + Math.random() * 900);",
+									"pm.variables.set('uniqueCode', randomCode);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201 Created\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"const json = pm.response.json();",
+									"if (json.data && json.data._id) {",
+									"    pm.collectionVariables.set(\"courseId\", json.data._id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"courseCode\": \"{{uniqueCode}}\",\n  \"courseName\": \"Design and Analysis of Algorithms\",\n  \"department\": \"Computer Science\",\n  \"credits\": 4,\n  \"semester\": 5\n}"
+						},
+						"url": "http://localhost:5002/courses"
+					}
+				},
+				{
+					"name": "2. GET All Courses",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5002/courses"
+					}
+				},
+				{
+					"name": "3. GET Course by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5002/courses/{{courseId}}"
+					}
+				},
+				{
+					"name": "4. PUT Update Course by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"credits\": 5,\n  \"courseName\": \"Advanced Design and Analysis of Algorithms\"\n}"
+						},
+						"url": "http://localhost:5002/courses/{{courseId}}"
+					}
+				},
+				{
+					"name": "5. DELETE Course by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"url": "http://localhost:5002/courses/{{courseId}}"
+					}
+				},
+				{
+					"name": "6. GET Course - Invalid ID Format (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 Bad Request\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5002/courses/invalid-id-123"
+					}
+				},
+				{
+					"name": "7. GET Course - Not Found (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404 Not Found\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5002/courses/60c72b2f9b1d8b2bad000000"
+					}
+				}
+			]
+		},
+		{
+			"name": "Task 3 - Book Catalogue API (Port 5003)",
+			"item": [
+				{
+					"name": "1. POST Add Book (Clean Architecture)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201 Created\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"const json = pm.response.json();",
+									"if (json.data && json.data._id) {",
+									"    pm.collectionVariables.set(\"bookId\", json.data._id);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Clean Architecture\",\n  \"author\": \"Robert C. Martin\",\n  \"category\": \"Software Engineering\",\n  \"publicationYear\": 2017,\n  \"availableCopies\": 12\n}"
+						},
+						"url": "http://localhost:5003/books"
+					}
+				},
+				{
+					"name": "2. POST Add Book (Science Category)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201 Created\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"A Brief History of Time\",\n  \"author\": \"Stephen Hawking\",\n  \"category\": \"Science\",\n  \"publicationYear\": 1988,\n  \"availableCopies\": 5\n}"
+						},
+						"url": "http://localhost:5003/books"
+					}
+				},
+				{
+					"name": "3. POST Add Book (Author: Rao)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201 Created\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Linear Models and Estimation\",\n  \"author\": \"C. R. Rao\",\n  \"category\": \"Mathematics\",\n  \"publicationYear\": 2002,\n  \"availableCopies\": 7\n}"
+						},
+						"url": "http://localhost:5003/books"
+					}
+				},
+				{
+					"name": "4. POST Add Book (Missing Fields -> 400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 Bad Request\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"\",\n  \"author\": \"\"\n}"
+						},
+						"url": "http://localhost:5003/books"
+					}
+				},
+				{
+					"name": "5. POST Add Book (Negative Copies -> 400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 Bad Request\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Physics for Scientists\",\n  \"author\": \"Paul Tipler\",\n  \"category\": \"Science\",\n  \"publicationYear\": 2015,\n  \"availableCopies\": -3\n}"
+						},
+						"url": "http://localhost:5003/books"
+					}
+				},
+				{
+					"name": "6. GET All Books",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5003/books"
+					}
+				},
+				{
+					"name": "7. GET Books - Filter by Category (Science)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5003/books?category=Science"
+					}
+				},
+				{
+					"name": "8. GET Books - Filter by Author (Rao)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5003/books?author=Rao"
+					}
+				},
+				{
+					"name": "9. GET Book by ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5003/books/{{bookId}}"
+					}
+				},
+				{
+					"name": "10. GET Book - Unknown ID (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404 Not Found\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5003/books/60c72b2f9b1d8b2bad000000"
+					}
+				},
+				{
+					"name": "11. GET Book - Invalid ID Format (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400 Bad Request\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"url": "http://localhost:5003/books/malformed-id-string"
+					}
+				}
+			]
+		}
+	]
+}

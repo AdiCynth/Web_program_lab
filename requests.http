@@ -1,0 +1,151 @@
+### ==============================================================================
+### TASK 1: STUDENT API (Port 5001)
+### ==============================================================================
+
+### 1.1 GET All Students
+GET http://localhost:5001/students
+
+### 1.2 GET Student by ID (Valid)
+GET http://localhost:5001/students/1
+
+### 1.3 GET Student by ID (Not Found -> 404)
+GET http://localhost:5001/students/999
+
+### 1.4 POST Create Student (Valid -> 201)
+POST http://localhost:5001/students
+Content-Type: application/json
+
+{
+  "name": "Ananya Sharma",
+  "department": "Computer Science",
+  "semester": 4
+}
+
+### 1.5 POST Create Student (Validation Error -> 400)
+POST http://localhost:5001/students
+Content-Type: application/json
+
+{
+  "name": ""
+}
+
+
+### ==============================================================================
+### TASK 2: COURSE API WITH MONGODB CRUD (Port 5002)
+### ==============================================================================
+
+### 2.1 POST Create Course (Valid -> 201)
+POST http://localhost:5002/courses
+Content-Type: application/json
+
+{
+  "courseCode": "CS301",
+  "courseName": "Design and Analysis of Algorithms",
+  "department": "Computer Science",
+  "credits": 4,
+  "semester": 5
+}
+
+### 2.2 GET All Courses (-> 200)
+GET http://localhost:5002/courses
+
+### 2.3 GET Single Course by ID (Replace with real _id from 2.1 or 2.2)
+GET http://localhost:5002/courses/6acfd922aa17e08d2b982954
+
+### 2.4 PUT Update Course by ID (-> 200)
+PUT http://localhost:5002/courses/6acfd922aa17e08d2b982954
+Content-Type: application/json
+
+{
+  "credits": 5,
+  "courseName": "Advanced Design and Analysis of Algorithms"
+}
+
+### 2.5 DELETE Course by ID (-> 200)
+DELETE http://localhost:5002/courses/6acfd922aa17e08d2b982954
+
+### 2.6 GET Course - Non-existent ID (-> 404)
+GET http://localhost:5002/courses/60c72b2f9b1d8b2bad000000
+
+### 2.7 GET Course - Malformed ObjectId (-> 400)
+GET http://localhost:5002/courses/invalid-id-format
+
+
+### ==============================================================================
+### TASK 3: BOOK CATALOGUE API WITH FILTERING & VALIDATION (Port 5003)
+### ==============================================================================
+
+### 3.1 POST Add Book 1 (Software Engineering -> 201)
+POST http://localhost:5003/books
+Content-Type: application/json
+
+{
+  "title": "Clean Architecture",
+  "author": "Robert C. Martin",
+  "category": "Software Engineering",
+  "publicationYear": 2017,
+  "availableCopies": 12
+}
+
+### 3.2 POST Add Book 2 (Science -> 201)
+POST http://localhost:5003/books
+Content-Type: application/json
+
+{
+  "title": "A Brief History of Time",
+  "author": "Stephen Hawking",
+  "category": "Science",
+  "publicationYear": 1988,
+  "availableCopies": 5
+}
+
+### 3.3 POST Add Book 3 (Author: Rao -> 201)
+POST http://localhost:5003/books
+Content-Type: application/json
+
+{
+  "title": "Data Structures with C",
+  "author": "C. R. Rao",
+  "category": "Computer Science",
+  "publicationYear": 2020,
+  "availableCopies": 8
+}
+
+### 3.4 POST Add Book - Missing Title & Author (-> 400)
+POST http://localhost:5003/books
+Content-Type: application/json
+
+{
+  "title": "",
+  "author": ""
+}
+
+### 3.5 POST Add Book - Negative Copies (-> 400)
+POST http://localhost:5003/books
+Content-Type: application/json
+
+{
+  "title": "Invalid Copies Test",
+  "author": "John Doe",
+  "category": "General",
+  "publicationYear": 2021,
+  "availableCopies": -3
+}
+
+### 3.6 GET All Books (-> 200)
+GET http://localhost:5003/books
+
+### 3.7 GET Books - Query by Category (Science -> 200)
+GET http://localhost:5003/books?category=Science
+
+### 3.8 GET Books - Query by Author (Rao -> 200)
+GET http://localhost:5003/books?author=Rao
+
+### 3.9 GET Single Book by ID (Replace with real _id)
+GET http://localhost:5003/books/6acfd922a9902a5dd3ef0cf3
+
+### 3.10 GET Book - Missing ID (-> 404)
+GET http://localhost:5003/books/60c72b2f9b1d8b2bad000000
+
+### 3.11 GET Book - Malformed ID (-> 400)
+GET http://localhost:5003/books/bad-id-123
